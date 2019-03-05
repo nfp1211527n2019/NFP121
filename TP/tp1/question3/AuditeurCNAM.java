@@ -44,8 +44,33 @@ public class AuditeurCNAM {
      * @return le login du Cnam simplifié, sans les adaptations dues aux
      *         homonymes...
      */
-    public String login() {
-        return "";// à compléter
+     public String login() {
+        String n = nom.toLowerCase();
+        String plnom;
+        if(n.length()>6){
+            plnom = n.substring(0,6);
+        }
+        else plnom=n;
+        String undersc ="_";
+        String ppp = prenom.toLowerCase(); 
+        String plprenom = ppp.substring(0,1);
+        plnom.replaceAll("-","_");
+        String login= plnom + undersc + plprenom; 
+        StringBuffer result = new StringBuffer();
+        if(login!=null && login.length()!=0) {
+            int index = -1;
+            char c = (char)0;
+            String chars= "àâ?éèêëîïô?ùûüç=,.+|][{}?<>';:~!@#$%^&*)(- ";
+            String replace= "aaaeeeeiioouuuc____________________________";
+            for(int i=0; i<login.length(); i++) {
+                c = login.charAt(i);
+                if( (index=chars.indexOf(c))!=-1 )
+                    result.append(replace.charAt(index));
+                else
+                    result.append(c);
+            }
+        }
+         return result.toString();
     }
 
     /**
@@ -54,7 +79,7 @@ public class AuditeurCNAM {
      * @return son nom
      */
     public String nom() {
-        return null;// à compléter
+        return nom;
     }
 
     /**
@@ -63,7 +88,7 @@ public class AuditeurCNAM {
      * @return son prénom
      */
     public String prenom() {
-        return null;// à compléter
+        return prenom;
     }
 
     /**
@@ -72,7 +97,7 @@ public class AuditeurCNAM {
      * @return son matricule
      */
     public String matricule() {
-        return null;// à compléter
+        return matricule;
     }
 
     /**
