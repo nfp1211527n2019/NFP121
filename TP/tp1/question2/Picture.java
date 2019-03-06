@@ -66,18 +66,18 @@
         
          
     }
+    public void setLaTerreNonFixe(){
+         if (laTerreEstFixe) {
+                laTerreEstFixe = false;
+                sun.slowMoveVertical(-220);
+                
+            }
+        }
     public void setLaTerreEstFixe(){
          if (!laTerreEstFixe) {
                 laTerreEstFixe = true;
-                sun.slowMoveVertical(300);
-                sun2.slowMoveVertical(-300);
-            }
-        }
-    public void setLaTerreNEstFixe(){
-         if (laTerreEstFixe) {
-                laTerreEstFixe = false;
-                sun.slowMoveVertical(300);
-                sun2.slowMoveVertical(-300);
+                sun.slowMoveVertical(220);
+                 
             }
         }
 
